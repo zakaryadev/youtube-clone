@@ -1,17 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  drawer: false,
+  drawer: true,
 };
 
 export const ShowSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    
+    setDrawer(state, action) {
+      // console.log(!state.drawer);
+      state.drawer = action.payload;
+    },
   },
 });
 
-export const {} = ShowSlice.actions;
+export const { setDrawer } = ShowSlice.actions;
 
 export default ShowSlice.reducer;
