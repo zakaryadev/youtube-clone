@@ -1,5 +1,5 @@
 # youtube-clone
-This project was bootstrapped with [React Pizza App](https://youtube-clone-zak.vercel.app)
+This project was bootstrapped with [YouTube Clone](https://youtube-clone-zak.vercel.app)
 
 ## Vite, ReactJS, Redux-Toolkit, React-Router-Dom, MUI, Styled-Components
 
