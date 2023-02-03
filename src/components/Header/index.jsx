@@ -3,7 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSearchValue } from "../../redux/slices/searchSlice";
 import { Container, Img, Menus, Search } from "./styled";
 import { Link } from "react-router-dom";
-
+import {
+  UilSearch,
+  UilTimes,
+  UilVideo,
+  UilBell,
+} from "@iconscout/react-unicons";
 const Header = () => {
   const dispatch = useDispatch();
   const { searchValue } = useSelector((state) => state.search);
@@ -21,7 +26,7 @@ const Header = () => {
         />
       </Link>
       <Search>
-        <i className="uil uil-search"></i>
+        <UilSearch />
         <input
           type="text"
           ref={inputRef}
@@ -29,19 +34,16 @@ const Header = () => {
           value={searchValue}
         />
         {searchValue.length > 0 && (
-          <i
-            className="uil uil-times"
-            onClick={() => dispatch(setSearchValue(""))}
-          ></i>
+          <UilTimes onClick={() => dispatch(setSearchValue(""))} />
         )}
       </Search>
       <Menus>
-        <i className="uil uil-video"></i>
-        <i className="uil uil-bell"></i>
+        <UilVideo />
+        <UilBell />
         <Img>
           <img
-            src="https://avatars.githubusercontent.com/u/99710957?v=4"
-            alt="logo"
+            src="https://yt3.ggpht.com/ILMOLWQODN1-TX3Cg2DNZzol60eAMxBgf_9Z_Y6-BUDWBboGFynDC1P-cfuqd4pjzTVIJylEZg=s88-c-k-c0x00ffffff-no-rj-mo"
+            alt="avatar"
           />
         </Img>
       </Menus>

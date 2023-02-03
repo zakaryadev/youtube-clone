@@ -1,10 +1,21 @@
 import React from "react";
+import Card from "../Card";
+import { CardWrapper, Container } from "./styled";
 
 const Home = () => {
   return (
-    <div>
-      <h1>Home componenet</h1>
-    </div>
+    <Container>
+      <CardWrapper>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </CardWrapper>
+    </Container>
   );
 };
 

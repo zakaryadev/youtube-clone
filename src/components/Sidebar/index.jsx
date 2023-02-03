@@ -1,31 +1,36 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { UilEstate, UilChannel, UilHistory } from "@iconscout/react-unicons";
 import { Container, Menu } from "./styled";
+
 const Sidebar = () => {
   return (
     <Container>
       <Menu>
         <Menu.Item>
-          <NavLink to={"/"} className={({ isActive }) => isActive && "active"}>
-            <i className="uil uil-estate"></i>
+          <NavLink
+            to={"/"}
+            className={({ isActive }) => (isActive ? "active" : null)}
+          >
+            <UilEstate />
             <p>Главная</p>
           </NavLink>
         </Menu.Item>
         <Menu.Item>
           <NavLink
             to={"/subscribe"}
-            className={({ isActive }) => isActive && "active"}
+            className={({ isActive }) => (isActive ? "active" : null)}
           >
-            <i className="uil uil-channel"></i>
+            <UilChannel />
             <p>Подписки</p>
           </NavLink>
         </Menu.Item>
         <Menu.Item>
           <NavLink
             to={"/history"}
-            className={({ isActive }) => isActive && "active"}
+            className={({ isActive }) => (isActive ? "active" : null)}
           >
-            <i class="uil uil-history"></i>
+            <UilHistory />
             <p>История</p>
           </NavLink>
         </Menu.Item>

@@ -10,7 +10,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   color: #fff !important;
-
+  position: sticky;
+  top: 0;
+  right: 0;
+  leftL 0;
   & a {
     & img {
       height: 48px;
@@ -30,15 +33,14 @@ const Search = styled.div`
   padding: 0 50px;
   width: 572px;
 
-  & i {
+  & svg {
     width: fit-content;
     position: absolute;
-    padding: 5px 7px;
+    padding: 8px;
     &:first-child {
-      font-size: 20px;
       left: 10px;
+      height: 20px;
     }
-    font-size: 25px;
     right: 10px;
     &:hover {
       cursor: pointer;
@@ -66,14 +68,9 @@ const Menus = styled.div`
   align-items: center;
   gap: 10px;
 
-  & i {
-    font-size: 25px;
-    padding: 5px 8px;
+  & svg {
+    padding: 8px;
     cursor: pointer;
-
-    & :before {
-      font-weight: 200;
-    }
 
     &:hover {
       cursor: pointer;

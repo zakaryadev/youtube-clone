@@ -6,8 +6,9 @@ const Container = styled.div`
   top: 56px;
   left: 0;
   height: calc(100vh - 56px);
-
-  width: 240px;
+  flex-basis: 16%;
+  min-width: 240px;
+  max-width: 240px;
 `;
 
 const Menu = styled.div`
@@ -22,15 +23,12 @@ Menu.Item = styled.div`
     text-decoration: none;
     color: #ffffff;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 8px 15px;
     color: white;
     border-radius: 8px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    & i {
-      font-size: 25px;
-    }
+    gap: 20px;
 
     &:hover {
       background: #ffffff1f;
