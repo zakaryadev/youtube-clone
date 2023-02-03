@@ -1,7 +1,6 @@
 import React from "react";
-
 const Sidebar = () => {
-  return <aside>ASide</aside>;
+  return <h1>Sidebar</h1>;
 };
 
 export default Sidebar;

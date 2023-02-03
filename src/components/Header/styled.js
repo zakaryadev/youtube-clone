@@ -27,16 +27,66 @@ const Search = styled.div`
   height: 40px;
   display: flex;
   align-items: center;
-  padding: 0 30px;
+  padding: 0 50px;
   width: 572px;
 
+  & i {
+    width: fit-content;
+    position: absolute;
+    padding: 5px 7px;
+    &:first-child {
+      font-size: 20px;
+      left: 10px;
+    }
+    font-size: 25px;
+    right: 10px;
+    &:hover {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+    }
+    &:active {
+      transform: scale(0.9);
+    }
+  }
   & input {
     background: transparent;
     outline: none;
     border: none;
     width: 100%;
     color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
   }
 `;
 
-export { Container, Logo, Search };
+const Menus = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  & i {
+    font-size: 25px;
+    padding: 5px 8px;
+
+    & :before {
+      font-weight: 200;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+    }
+  }
+`;
+
+const Img = styled.div`
+  & img {
+    height: 36px;
+    border-radius: 20px;
+  }
+`;
+
+export { Container, Logo, Search, Menus, Img };
