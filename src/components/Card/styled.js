@@ -1,20 +1,36 @@
 import styled from "styled-components";
 
 const Card = styled.a`
+  position: relative;
   cursor: pointer;
   height: 265px;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-decoration: none !important;
+  & a {
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-decoration: none !important;
+    &:hover {
+      & > div:nth-child(2) {
+        padding: 0 10px;
+      }
+    }
+  }
+  background: #0f0f0f;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    position: relative;
+    transform: scale(1.1);
+    background: #272727;
+    border-radius: 12px;
+  }
 `;
 
 Card.Thumbnail = styled.div`
   box-sizing: border-box;
   & img {
     height: 150px;
-    border-radius: 15px;
+    border-radius: 12px;
     width: 100%;
   }
 `;
