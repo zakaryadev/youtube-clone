@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Card = styled.a`
+const Card = styled.div`
   position: relative;
   cursor: pointer;
   height: 265px;
@@ -11,17 +11,23 @@ const Card = styled.a`
     gap: 10px;
     text-decoration: none !important;
     &:hover {
+      & > div:nth-child(1) {
+        & img {
+          border-bottom-right-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
       & > div:nth-child(2) {
-        padding: 0 10px;
+        padding: 0 5px;
       }
     }
   }
   background: #0f0f0f;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.4s ease-in-out;
   &:hover {
     position: relative;
-    transform: scale(1.1);
-    background: #272727;
+    transform: scale(1.05);
+    background: #212121;
     border-radius: 12px;
   }
 `;
