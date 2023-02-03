@@ -69,6 +69,7 @@ const Menus = styled.div`
   & i {
     font-size: 25px;
     padding: 5px 8px;
+    cursor: pointer;
 
     & :before {
       font-weight: 200;
@@ -86,6 +87,7 @@ const Img = styled.div`
   & img {
     height: 36px;
     border-radius: 20px;
+    cursor: pointer;
   }
 `;
 
