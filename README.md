@@ -1,7 +1,7 @@
 # youtube-clone
 This project was bootstrapped with [YouTube Clone](https://youtube-clone-zak.vercel.app)
 
-## Vite, ReactJS, Redux-Toolkit, React-Router-Dom, MUI, Styled-Components
+## Vite, ReactJS, Redux-Toolkit, React-Router-Dom, Antd, Styled-Components, Iconscout Icons, YouTube API V3, Axios
 
 ## Available Scripts
 
