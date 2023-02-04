@@ -13,7 +13,8 @@ const Container = styled.div`
   position: sticky;
   top: 0;
   right: 0;
-  leftL 0;
+  left: 0;
+  z-index: 2000000 !important;
   & a {
     & img {
       height: 48px;

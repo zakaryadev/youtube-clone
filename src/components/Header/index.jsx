@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchValue } from "../../redux/slices/searchSlice";
+import debounce from "lodash.debounce";
 import { Container, Img, Menus, Search } from "./styled";
 import { Link } from "react-router-dom";
 import {
@@ -9,6 +10,7 @@ import {
   UilVideo,
   UilBell,
 } from "@iconscout/react-unicons";
+
 const Header = () => {
   const dispatch = useDispatch();
   const { searchValue } = useSelector((state) => state.search);
@@ -16,6 +18,13 @@ const Header = () => {
   const handleChange = () => {
     dispatch(setSearchValue(inputRef.current.value));
   };
+
+  const updateSearchValue = React.useCallback(
+    debounce((str) => {
+      dispatch(setSearchValue(str));
+    }, 250),
+    []
+  );
 
   return (
     <Container>

@@ -14,6 +14,12 @@ const Home = () => {
         <Card />
         <Card />
         <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
       </CardWrapper>
     </Container>
   );

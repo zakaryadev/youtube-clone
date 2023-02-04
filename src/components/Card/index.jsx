@@ -2,8 +2,10 @@ import { Tooltip } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "./styled";
+import moment from "moment";
 
 const VideoCard = () => {
+  const dat = "2020-07-24T04:30:47Z";
   const dataDifference = (dat, current = new Date()) => {
     const time = new Date(dat);
     const year = time.getFullYear();
@@ -38,16 +40,14 @@ const VideoCard = () => {
             <Card.Title>The Witcher - Geralt vs Renfri 4K UHD</Card.Title>
           </Card.ContentItem>
           <Card.ContentItem>
-            <Card.Channel tooltip="title" href="/">
+            <Card.Channel tooltip="title" href="/@StarLena">
               <Tooltip title="StarLena">
                 <span>StarLena</span>
               </Tooltip>
             </Card.Channel>
           </Card.ContentItem>
           <Card.ContentItem>
-            <Card.Statistic>
-              {dataDifference("2020-07-24T04:30:47Z")}
-            </Card.Statistic>
+            <Card.Statistic>{moment(dat).fromNow()}</Card.Statistic>
           </Card.ContentItem>
         </Card.Content>
       </Link>
