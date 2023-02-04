@@ -13,7 +13,7 @@ const Sidebar = () => {
             className={({ isActive }) => (isActive ? "active" : null)}
           >
             <UilEstate />
-            <p>Главная</p>
+            <p>Home</p>
           </NavLink>
         </Menu.Item>
         <Menu.Item>
@@ -22,7 +22,7 @@ const Sidebar = () => {
             className={({ isActive }) => (isActive ? "active" : null)}
           >
             <UilChannel />
-            <p>Подписки</p>
+            <p>Subscriptions</p>
           </NavLink>
         </Menu.Item>
         <Menu.Item>
@@ -31,11 +31,9 @@ const Sidebar = () => {
             className={({ isActive }) => (isActive ? "active" : null)}
           >
             <UilHistory />
-            <p>История</p>
+            <p>History</p>
           </NavLink>
         </Menu.Item>
-        <Menu.Item>AWa</Menu.Item>
-        <Menu.Item>AWa</Menu.Item>
       </Menu>
     </Container>
   );

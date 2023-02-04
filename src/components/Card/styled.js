@@ -23,7 +23,7 @@ const Card = styled.div`
     }
   }
   background: #0f0f0f;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease;
   &:hover {
     position: relative;
     transform: scale(1.05);
@@ -45,6 +45,7 @@ Card.Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  transition: all 0.4s ease-in-out;
 `;
 
 Card.ContentItem = styled.div`
@@ -60,7 +61,7 @@ Card.Avatar = styled.div`
   }
 `;
 
-Card.Title = styled.div`
+Card.Title = styled.p`
   font-size: 1rem;
   font-weight: 500;
   overflow: hidden;

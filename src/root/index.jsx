@@ -10,9 +10,10 @@ const Root = () => {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
+          <Route path="subscribe" element={<h1>subscribe</h1>} />
           <Route path="history" element={<History />} />
-          {/* <Route index element={<Home />} />
-          <Route index element={<Home />} /> */}
+          <Route path="videos" element={<h1>videos</h1>} />
+          <Route path="videos/:id" element={<h1>videos/:id</h1>} />
         </Route>
       </Routes>
     </BrowserRouter>
