@@ -14,6 +14,7 @@ const Root = () => {
           <Route path="history" element={<History />} />
           <Route path="videos" element={<h1>videos</h1>} />
           <Route path="videos/:id" element={<h1>videos/:id</h1>} />
+          <Route path="about" element={<h1>About</h1>} />
         </Route>
       </Routes>
     </BrowserRouter>

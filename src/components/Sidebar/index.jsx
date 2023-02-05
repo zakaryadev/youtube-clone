@@ -1,6 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { UilEstate, UilChannel, UilHistory } from "@iconscout/react-unicons";
+import {
+  UilEstate,
+  UilChannel,
+  UilHistory,
+  UilListUl,
+  UilSetting,
+  UilQuestion,
+  UilFeedback,
+} from "@iconscout/react-unicons";
 import { Container, Menu } from "./styled";
 
 const Sidebar = () => {
@@ -32,6 +40,33 @@ const Sidebar = () => {
           >
             <UilHistory />
             <p>History</p>
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item>
+          <NavLink
+            to={"/about"}
+            className={({ isActive }) => (isActive ? "active" : null)}
+          >
+            <UilSetting />
+            <p>Settings</p>
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item>
+          <NavLink
+            to={"/about"}
+            className={({ isActive }) => (isActive ? "active" : null)}
+          >
+            <UilQuestion />
+            <p>Help</p>
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item>
+          <NavLink
+            to={"/about"}
+            className={({ isActive }) => (isActive ? "active" : null)}
+          >
+            <UilFeedback />
+            <p>Feedback</p>
           </NavLink>
         </Menu.Item>
       </Menu>
