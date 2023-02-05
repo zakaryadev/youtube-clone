@@ -4,6 +4,27 @@
   font-family: 'Inter', sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  height: 450px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: gray; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.77);  
+}
+
 body {
   background-color: #0f0f0f;
   color: #ffffff;

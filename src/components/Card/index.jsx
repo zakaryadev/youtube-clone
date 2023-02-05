@@ -3,8 +3,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "./styled";
 import moment from "moment";
-
+import { fetchChannel } from "../../redux/slices/searchSlice";
+import { useDispatch } from "react-redux";
+// dispatch(fetchChannel(snippet.channelId));
 const VideoCard = ({ id, snippet }) => {
+  const dispatch = useDispatch();
+  React.useEffect(() => {}, []);
   return (
     <Card>
       <Link to="/history">
@@ -14,10 +18,7 @@ const VideoCard = ({ id, snippet }) => {
       </Link>
       <Card.Content>
         <Card.ContentItem>
-          <Card.Avatar>
-            <img src={snippet} alt="Channel-avatar" />
-          </Card.Avatar>
-          <Card.Title>{snippet.title.slice(0, 30)}...</Card.Title>
+          <Card.Title>{snippet.title.slice(0, 50)}...</Card.Title>
         </Card.ContentItem>
         <Card.ContentItem>
           <Card.Channel tooltip="title" href="/@StarLena">

@@ -53,7 +53,7 @@ const Search = styled.div`
     }
   }
   & input {
-    background: transparent;
+    background: #121212;
     outline: none;
     border: none;
     width: 100%;

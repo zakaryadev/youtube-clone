@@ -4,22 +4,24 @@ const Card = styled.div`
   position: relative;
   cursor: pointer;
   height: 265px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   & a {
     color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
     text-decoration: none !important;
-    &:hover {
-      & > div:nth-child(1) {
+  }
+  &:hover {
+    & a {
+      & > div {
         & img {
           border-bottom-right-radius: 0;
           border-bottom-left-radius: 0;
         }
       }
-      & > div:nth-child(2) {
-        padding: 0 5px;
-      }
+    }
+    & > div:nth-child(2) {
+      padding: 0 5px;
     }
   }
   background: #0f0f0f;
