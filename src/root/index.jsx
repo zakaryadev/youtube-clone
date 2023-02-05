@@ -1,21 +1,23 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import History from "../pages/History";
 import HomePage from "../pages/HomePage";
+import VideoDetailsPage from "../pages/VideoDetailsPage.jsx";
+import Sidebar from "../components/Sidebar/index.jsx";
+import VideoLayout from "../layouts/VideoLayout.jsx";
 
 const Root = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="subscribe" element={<h1>subscribe</h1>} />
-          <Route path="history" element={<History />} />
-          <Route path="videos" element={<h1>videos</h1>} />
-          <Route path="videos/:id" element={<h1>videos/:id</h1>} />
-          <Route path="about" element={<h1>About</h1>} />
+        <Route path="/" element={<MainLayout/>}>
+          <Route index element={<HomePage/>}/>
+          <Route path="subscribe" element={<h1>subscribe</h1>}/>
+          <Route path="history" element={<History/>}/>
+          <Route path="about" element={<h1>About</h1>}/>
         </Route>
+        <Route path="/watch" element={<VideoLayout />}/>
       </Routes>
     </BrowserRouter>
   );

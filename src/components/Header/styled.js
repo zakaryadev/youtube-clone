@@ -33,6 +33,7 @@ const Search = styled.div`
   align-items: center;
   padding: 0 50px;
   width: 572px;
+  background: #121212;
 
   & svg {
     width: fit-content;
@@ -53,7 +54,7 @@ const Search = styled.div`
     }
   }
   & input {
-    background: #121212;
+    background: transparent;
     outline: none;
     border: none;
     width: 100%;
