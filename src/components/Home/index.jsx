@@ -4,6 +4,7 @@ import { CardWrapper, Container } from "./styled";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchVideos, fetchChannel } from "../../redux/slices/searchSlice";
 import SkeletonCard from "../Card/SceletonCard";
+import Preloader from "../Preloader";
 const Home = () => {
   const dispatch = useDispatch();
   const { list, status } = useSelector((state) => state.search);
@@ -14,6 +15,7 @@ const Home = () => {
 
   return (
     <Container>
+      <Preloader />
       <CardWrapper>
         {status === "loading"
           ? [...new Array(12)].map((_, indx) => {
