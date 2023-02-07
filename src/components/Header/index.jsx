@@ -13,16 +13,25 @@ import {
 
 const Header = () => {
   const dispatch = useDispatch();
+  const [timeVal, setTimeVal] = React.useState("");
   const { searchValue } = useSelector((state) => state.search);
   const inputRef = React.useRef();
+
   const handleChange = () => {
-    dispatch(setSearchValue(inputRef.current.value));
+    setTimeVal(inputRef.current.value);
+    updateSearchValue(inputRef.current.value);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      updateSearchValue(inputRef.current.value);
+    }
   };
 
   const updateSearchValue = React.useCallback(
     debounce((str) => {
       dispatch(setSearchValue(str));
-    }, 250),
+    }, 500),
     []
   );
 
@@ -40,10 +49,16 @@ const Header = () => {
           type="text"
           ref={inputRef}
           onChange={handleChange}
-          value={searchValue}
+          value={timeVal}
+          onKeyDown={handleKeyDown}
         />
-        {searchValue.length > 0 && (
-          <UilTimes onClick={() => dispatch(setSearchValue(""))} />
+        {searchValue.length > 1 && (
+          <UilTimes
+            onClick={() => {
+              dispatch(setSearchValue(""));
+              setTimeVal("");
+            }}
+          />
         )}
       </Search>
       <Menus>

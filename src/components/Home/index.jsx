@@ -2,16 +2,16 @@ import React from "react";
 import Card from "../Card";
 import { CardWrapper, Container } from "./styled";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchVideos, fetchChannel } from "../../redux/slices/searchSlice";
+import { fetchVideos } from "../../redux/slices/searchSlice";
 import SkeletonCard from "../Card/SceletonCard";
 import Preloader from "../Preloader";
 const Home = () => {
   const dispatch = useDispatch();
-  const { list, status } = useSelector((state) => state.search);
+  const { searchValue, list, status } = useSelector((state) => state.search);
 
   React.useEffect(() => {
-    dispatch(fetchVideos());
-  }, []);
+    dispatch(fetchVideos(searchValue || "Iron man"));
+  }, [searchValue]);
 
   return (
     <Container>

@@ -6,13 +6,13 @@ export const fetchVideo = createAsyncThunk(
   async (videoId) => {
     const options = {
       params: {
-        part: "snippet,id",
+        part: "contentDetails,snippet,statistics",
         id: videoId,
       },
     };
     const { data } = await instance.get("videos", options);
 
-    return data;
+    return data.items[0];
   }
 );
 

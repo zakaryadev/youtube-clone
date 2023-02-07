@@ -1,12 +1,10 @@
 import axios from "axios";
-const REACT_APP_BASE_URL = "https://www.googleapis.com/youtube/v3/";
-// const API_KEY = "AIzaSyDgCyDH2kKphNp-hrSN4mg1s5trGy9JT7w";
-const API_KEY = "AIzaSyA4XIIhZ6FGg3CpB7vED8kBQHeqnG1eIUE";
 
 const instance = axios.create({
-  baseURL: REACT_APP_BASE_URL,
-  params: {
-    key: API_KEY,
+  baseURL: "https://youtube-v31.p.rapidapi.com/",
+  headers: {
+    "X-RapidAPI-Key": "14788c386cmsh641ead1665cfb4cp1f8c58jsne3d924249208",
+    "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
   },
 });
 

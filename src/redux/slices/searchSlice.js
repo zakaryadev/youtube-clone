@@ -1,15 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { instance } from "../../api/index";
 
-export const fetchVideos = createAsyncThunk("search/fetchVideos", async () => {
+export const fetchVideos = createAsyncThunk("search/fetchVideos", async (q) => {
   const options = {
     params: {
       part: "snippet,id",
       maxResults: 250,
-      q: "Iron+man",
-      regionCode: "RU",
+      q: q,
+      regionCode: "US",
       resultsPerPage: 250,
-      // pageToken: "CDIQAA",
     },
   };
   const { data } = await instance.get("search", options);
