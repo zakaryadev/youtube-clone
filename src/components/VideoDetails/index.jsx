@@ -5,7 +5,7 @@ import { fetchVideo } from "../../redux/slices/videoSlice.js";
 import { Container, Video } from "./styled.js";
 import VideoPlayer from "./VideoPlayer";
 
-const VideoDetails = () => {
+const VideoDetails = ({ videoID }) => {
   const { video } = useSelector((state) => state.video);
   const dispatch = useDispatch();
   const { snippet } = video;
@@ -20,7 +20,7 @@ const VideoDetails = () => {
   return (
     <Container>
       <Video>
-        <VideoPlayer id={videoId} />
+        <VideoPlayer id={videoId ? videoId : videoID} />
         <Video.Title>{snippet?.title}</Video.Title>
         <Video.Desc>{snippet?.description}</Video.Desc>
       </Video>
