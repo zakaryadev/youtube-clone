@@ -5,15 +5,24 @@ import { fetchVideo } from "../../redux/slices/videoSlice.js";
 import { Container, Video } from "./styled.js";
 import VideoPlayer from "./VideoPlayer";
 
-const VideoDetails = ({ videoID }) => {
+const VideoDetails = () => {
+  const location = useLocation();
+  const history = useHistory();
+  const videoId = location.search.slice(3);
+
+  function handleClick(newVideoId) {
+    history.push({
+      pathname: `/watch`,
+      state: { videoId: newVideoId },
+    });
+  }
+
   const { video } = useSelector((state) => state.video);
   const dispatch = useDispatch();
   const { snippet } = video;
 
-  const location = useLocation();
-  const videoId = location.search.slice(3);
-
   React.useEffect(() => {
+    handleClick(videoId);
     dispatch(fetchVideo(videoId));
   }, [location]);
 
