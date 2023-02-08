@@ -9,7 +9,7 @@ const Root = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/*" element={<MainLayout />}>
+        <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
           <Route path="subscribe" element={<h1>subscribe</h1>} />
           <Route path="history" element={<History />} />
