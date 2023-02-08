@@ -1,6 +1,5 @@
 {
   "redirects": [
-    { "source": "/", "destination": "/" },
     { "source": "/watch", "destination": "/" }
   ]
 }
