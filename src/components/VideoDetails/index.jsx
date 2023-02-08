@@ -7,23 +7,17 @@ import VideoPlayer from "./VideoPlayer";
 
 const VideoDetails = () => {
   const location = useLocation();
-  const history = useHistory();
   const videoId = location.search.slice(3);
-
-  function handleClick(newVideoId) {
-    history.push({
-      pathname: `/watch`,
-      state: { videoId: newVideoId },
-    });
-  }
 
   const { video } = useSelector((state) => state.video);
   const dispatch = useDispatch();
   const { snippet } = video;
 
   React.useEffect(() => {
-    handleClick(videoId);
-    dispatch(fetchVideo(videoId));
+    if (window.location.search) {
+      // console.log();
+      dispatch(fetchVideo(window.location.search.slice(3)));
+    }
   }, [location]);
 
   return (
