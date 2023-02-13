@@ -1,11 +1,8 @@
 import React from "react";
+import History from "../components/History";
 
-const History = () => {
-  return (
-    <div>
-      <h1>History Page</h1>
-    </div>
-  );
+const HistoryPage = () => {
+  return <History />;
 };
 
-export default History;
+export default HistoryPage;

@@ -1,8 +1,8 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSearchValue } from "../../redux/slices/searchSlice";
 import debounce from "lodash.debounce";
-import { Container, Img, Menus, Search } from "./styled";
+import { Container, Img, Logo, Menus, Search } from "./styled";
 import { Link } from "react-router-dom";
 import {
   UilSearch,
@@ -13,35 +13,34 @@ import {
 
 const Header = () => {
   const dispatch = useDispatch();
-  const [timeVal, setTimeVal] = React.useState("");
   const { searchValue } = useSelector((state) => state.search);
+
+  const [timeVal, setTimeVal] = React.useState("");
   const inputRef = React.useRef();
-
-  const handleChange = () => {
-    setTimeVal(inputRef.current.value);
-    updateSearchValue(inputRef.current.value);
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      updateSearchValue(inputRef.current.value);
-    }
-  };
 
   const updateSearchValue = React.useCallback(
     debounce((str) => {
       dispatch(setSearchValue(str));
-    }, 500),
+    }, 450),
     []
   );
+
+  const handleChange = (event) => {
+    setTimeVal(inputRef.current.value);
+    if (event.key === "Enter") {
+      updateSearchValue(inputRef.current.value);
+    }
+  };
 
   return (
     <Container>
       <Link to="/">
-        <img
-          src="https://clone-afc5e.web.app/static/media/youtube_dark.7c6b240a.png"
-          alt="Logo"
-        />
+        <Logo>
+          <img
+            src="https://clone-afc5e.web.app/static/media/youtube_dark.7c6b240a.png"
+            alt="Logo"
+          />
+        </Logo>
       </Link>
       <Search>
         <UilSearch />
@@ -49,10 +48,10 @@ const Header = () => {
           type="text"
           ref={inputRef}
           onChange={handleChange}
-          value={timeVal}
-          onKeyDown={handleKeyDown}
+          value={timeVal.length > 0 ? timeVal : searchValue}
+          onKeyDown={handleChange}
         />
-        {searchValue.length > 1 && (
+        {timeVal.length > 1 && (
           <UilTimes
             onClick={() => {
               dispatch(setSearchValue(""));

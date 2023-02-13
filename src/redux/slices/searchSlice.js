@@ -4,32 +4,17 @@ import { instance } from "../../api/index";
 export const fetchVideos = createAsyncThunk("search/fetchVideos", async (q) => {
   const options = {
     params: {
+      maxResults: 100,
+      resultsPerPage: 100,
       part: "snippet,id",
-      maxResults: 250,
       q: q,
-      regionCode: "US",
-      resultsPerPage: 250,
+      // pageToken: "CDIQAA",
     },
   };
   const { data } = await instance.get("search", options);
 
   return data;
 });
-
-export const fetchChannel = createAsyncThunk(
-  "search/fetchChannel",
-  async (id) => {
-    const options = {
-      params: {
-        part: "snippet,contentDetails,statistics",
-        id: id,
-      },
-    };
-    const data = await instance.get("channels", options);
-
-    return data.data.items[0].snippet.thumbnails.high.url;
-  }
-);
 
 const initialState = {
   searchValue: "",
@@ -44,6 +29,7 @@ export const searchSlice = createSlice({
   reducers: {
     setSearchValue: (state, action) => {
       state.searchValue = action.payload;
+      state.list = [];
     },
     setList: (state, action) => {
       state.list.push(action.payload);
@@ -61,15 +47,6 @@ export const searchSlice = createSlice({
     builder.addCase(fetchVideos.rejected, (state, action) => {
       state.status = "error";
       state.list = [];
-    });
-    builder.addCase(fetchChannel.pending, (state, action) => {
-      state.channelStatus = "loading";
-    });
-    builder.addCase(fetchChannel.fulfilled, (state, action) => {
-      state.channelStatus = "success";
-    });
-    builder.addCase(fetchChannel.rejected, (state, action) => {
-      state.channelStatus = "error";
     });
   },
 });

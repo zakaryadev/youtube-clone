@@ -1,32 +1,95 @@
 import React from "react";
+import qs from "qs";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchVideo } from "../../redux/slices/videoSlice.js";
-import { Container, Video } from "./styled.js";
 import VideoPlayer from "./VideoPlayer";
+import RelationVideos from "../RelationVideos/index.jsx";
+import {
+  fetchRelationVideo,
+  fetchVideo,
+} from "../../redux/slices/videoSlice.js";
+import { Container, Toggler, Video } from "./styled.js";
+import { UilEye, UilThumbsUp } from "@iconscout/react-unicons";
+import { Tooltip } from "antd";
 
 const VideoDetails = () => {
+  const [show, setShow] = React.useState(false);
   const location = useLocation();
   const videoId = location.search.slice(3);
 
   const { video } = useSelector((state) => state.video);
   const dispatch = useDispatch();
-  const { snippet } = video;
+  const { snippet, statistics } = video;
 
   React.useEffect(() => {
     if (window.location.search) {
-      // console.log();
       dispatch(fetchVideo(window.location.search.slice(3)));
+      dispatch(fetchRelationVideo(videoId));
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   }, [location]);
+
+  const TextWithLinks = ({ text }) => {
+    const [linkedText, setLinkedText] = React.useState(text);
+
+    React.useEffect(() => {
+      const hashtagRegex = /(#\w+)/g;
+      const urlRegex = /(https?:\/\/[^\s]+)/g;
+
+      const makeLinks = (text) => {
+        return text
+          .replace(hashtagRegex, '<a href="$1" target="_blank">$1</a>')
+          .replace(urlRegex, '<a href="$1" target="_blank">$1</a>');
+      };
+
+      setLinkedText(makeLinks(text));
+    }, [text]);
+
+    return (
+      <span
+        dangerouslySetInnerHTML={{
+          __html: linkedText,
+        }}
+      />
+    );
+  };
 
   return (
     <Container>
       <Video>
         <VideoPlayer id={videoId ? videoId : videoID} />
         <Video.Title>{snippet?.title}</Video.Title>
-        <Video.Desc>{snippet?.description}</Video.Desc>
+        <Video.Info>
+          <Tooltip title={snippet?.channelTitle}>
+            <Video.ChannelTitle>{snippet?.channelTitle}</Video.ChannelTitle>
+          </Tooltip>
+          <Video.View>
+            <UilThumbsUp />
+            {statistics?.likeCount}
+          </Video.View>
+          <Video.View>
+            <UilEye />
+            {statistics?.viewCount}
+          </Video.View>
+        </Video.Info>
+        <Video.Desc
+          style={{
+            overflow: show ? "none" : "hidden",
+            height: show ? "fit-content" : "100px",
+          }}
+        >
+          {snippet?.description && (
+            <TextWithLinks text={snippet?.description} />
+          )}
+        </Video.Desc>
+        <Toggler onClick={() => setShow(!show)}>
+          {show ? "Hide..." : "Show..."}
+        </Toggler>
       </Video>
+      <RelationVideos />
     </Container>
   );
 };

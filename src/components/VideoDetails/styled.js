@@ -4,6 +4,8 @@ const Container = styled.div`
   padding: 30px 60px;
   display: flex;
   flex-direction: row;
+  gap: 20px;
+  justify-content: space-between;
   ~ canvas {
     display: none;
   }
@@ -11,6 +13,10 @@ const Container = styled.div`
 
 const Video = styled.div`
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
   flex-basis: 70%;
   & iframe {
     width: 100%;
@@ -21,7 +27,7 @@ const Video = styled.div`
 Video.Title = styled.h1`
   padding-top: 10px;
   word-break: break-word;
-  font-size: 1.5rem;
+  font-size: 20px;
   line-height: 2.8rem;
   font-weight: 600;
   overflow: hidden;
@@ -35,13 +41,48 @@ Video.Title = styled.h1`
   white-space: normal;
 `;
 
-Video.Desc = styled.p`
-  font-size: 1rem;
-  line-height: 2rem;
-  font-weight: 400;
-  // white-space: pre;
-  box-sizing: border-box;
-  width: 500px;
+Video.Info = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 50px;
 `;
 
-export { Container, Video };
+Video.ChannelTitle = styled.div`
+  cursor: pointer;
+`;
+
+Video.View = styled.div`
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+`;
+
+Video.Desc = styled.p`
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  white-space: break-spaces;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.12);
+  border-radius: 15px;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 10%;
+  & a {
+    color: #3ea6ff;
+  }
+`;
+
+const Toggler = styled.button`
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1.6rem;
+  padding: 5px;
+`;
+
+export { Container, Video, Toggler };

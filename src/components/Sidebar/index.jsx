@@ -4,9 +4,7 @@ import {
   UilEstate,
   UilChannel,
   UilHistory,
-  UilSetting,
   UilQuestion,
-  UilFeedback,
 } from "@iconscout/react-unicons";
 import { Container, Menu } from "./styled";
 
@@ -41,15 +39,7 @@ const Sidebar = () => {
             <p>History</p>
           </NavLink>
         </Menu.Item>
-        <Menu.Item>
-          <NavLink
-            to={"/about"}
-            className={({ isActive }) => (isActive ? "active" : null)}
-          >
-            <UilSetting />
-            <p>Settings</p>
-          </NavLink>
-        </Menu.Item>
+
         <Menu.Item>
           <NavLink
             to={"/about"}
@@ -57,15 +47,6 @@ const Sidebar = () => {
           >
             <UilQuestion />
             <p>Help</p>
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item>
-          <NavLink
-            to={"/about"}
-            className={({ isActive }) => (isActive ? "active" : null)}
-          >
-            <UilFeedback />
-            <p>Feedback</p>
           </NavLink>
         </Menu.Item>
       </Menu>
