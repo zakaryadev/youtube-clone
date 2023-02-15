@@ -33,3 +33,8 @@ body {
 .active {
   background-color: #ffffff1f;
 }
+
+.btn-load {
+  margin-top: 20px;
+  width: 100%;
+}

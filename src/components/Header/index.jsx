@@ -51,11 +51,12 @@ const Header = () => {
           value={timeVal.length > 0 ? timeVal : searchValue}
           onKeyDown={handleChange}
         />
-        {timeVal.length > 1 && (
+        {inputRef?.correct?.length > 1 && (
           <UilTimes
             onClick={() => {
               dispatch(setSearchValue(""));
               setTimeVal("");
+              localStorage.removeItem("nextPageToken");
             }}
           />
         )}

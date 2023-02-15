@@ -23,11 +23,11 @@ const Sidebar = () => {
         </Menu.Item>
         <Menu.Item>
           <NavLink
-            to={"/subscribe"}
+            to={"/channels"}
             className={({ isActive }) => (isActive ? "active" : null)}
           >
             <UilChannel />
-            <p>Subscriptions</p>
+            <p>Channels</p>
           </NavLink>
         </Menu.Item>
         <Menu.Item>

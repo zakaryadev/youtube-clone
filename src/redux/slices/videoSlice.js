@@ -52,7 +52,6 @@ export const searchSlice = createSlice({
     builder.addCase(fetchVideo.rejected, (state, action) => {
       state.video = [];
     });
-
     builder.addCase(fetchRelationVideo.pending, (state, action) => {
       state.status = "loading";
       state.relatedVideos = [];

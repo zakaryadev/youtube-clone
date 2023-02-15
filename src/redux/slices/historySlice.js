@@ -5,12 +5,18 @@ const initialState = {
 };
 
 export const historySlice = createSlice({
-  name: "search",
+  name: "history",
   initialState,
   reducers: {
     setHistory: (state, action) => {
-      state.history.push(action.payload);
-      localStorage.setItem("id-s", state.history.toString());
+      if (
+        !state.history.some(
+          (item) => item.id.videoId === action.payload.id.videoId
+        )
+      ) {
+        state.history.push(action.payload);
+      }
+      localStorage.setItem("id-s", JSON.stringify(state.history));
     },
   },
 });

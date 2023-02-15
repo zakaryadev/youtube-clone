@@ -2,18 +2,34 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { instance } from "../../api/index";
 
 export const fetchVideos = createAsyncThunk("search/fetchVideos", async (q) => {
-  const options = {
-    params: {
-      maxResults: 100,
-      resultsPerPage: 100,
-      part: "snippet,id",
-      q: q,
-      // pageToken: "CDIQAA",
-    },
-  };
-  const { data } = await instance.get("search", options);
+  const token = localStorage.getItem("nextPageToken");
 
-  return data;
+  if (token != undefined) {
+    const options = {
+      params: {
+        maxResults: 100,
+        resultsPerPage: 100,
+        part: "snippet,id",
+        q: q,
+        pageToken: token,
+      },
+    };
+    const { data } = await instance.get("search", options);
+
+    return data;
+  } else {
+    const options = {
+      params: {
+        maxResults: 100,
+        resultsPerPage: 100,
+        part: "snippet,id",
+        q: q,
+      },
+    };
+    const { data } = await instance.get("search", options);
+
+    return data;
+  }
 });
 
 const initialState = {
@@ -38,7 +54,7 @@ export const searchSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchVideos.pending, (state, action) => {
       state.status = "loading";
-      state.list = [];
+      localStorage.removeItem("nextPageToken");
     });
     builder.addCase(fetchVideos.fulfilled, (state, action) => {
       state.status = "success";
@@ -47,6 +63,7 @@ export const searchSlice = createSlice({
     builder.addCase(fetchVideos.rejected, (state, action) => {
       state.status = "error";
       state.list = [];
+      localStorage.removeItem("nextPageToken");
     });
   },
 });

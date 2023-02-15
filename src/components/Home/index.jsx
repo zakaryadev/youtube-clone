@@ -7,6 +7,7 @@ import Preloader from "../Preloader";
 import { CardWrapper, Container } from "./styled";
 import { fetchVideos } from "../../redux/slices/searchSlice";
 import { setHistory } from "../../redux/slices/historySlice";
+import { Button } from "antd";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -16,12 +17,17 @@ const Home = () => {
     if (list.length === 0) {
       dispatch(fetchVideos(searchValue || "Apple California"));
     }
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, [searchValue]);
 
-  localStorage.setItem("nextPageToken", list.nextPageToken);
-
-  const onClick = (id) => {
-    dispatch(setHistory(id));
+  if (list.nextPageToken) {
+    localStorage.setItem("nextPageToken", list?.nextPageToken);
+  }
+  const onClick = (obj) => {
+    dispatch(setHistory(obj));
   };
 
   return (
@@ -36,16 +42,17 @@ const Home = () => {
             list?.items?.length > 0 &&
             list?.items.map((item) => {
               if (item.id.kind === "youtube#video") {
-                return (
-                  <Card
-                    {...item}
-                    key={uuidv4()}
-                    onClick={() => onClick(item?.id?.videoId)}
-                  />
-                );
+                return <Card {...item} key={uuidv4()} onClick={onClick} />;
               }
             })}
       </CardWrapper>
+      <Button
+        className="btn btn-load"
+        ghost
+        onClick={() => dispatch(fetchVideos(searchValue))}
+      >
+        Load more...
+      </Button>
     </Container>
   );
 };

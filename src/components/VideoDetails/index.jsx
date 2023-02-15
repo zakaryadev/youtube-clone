@@ -1,5 +1,4 @@
 import React from "react";
-import qs from "qs";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import VideoPlayer from "./VideoPlayer";
@@ -23,7 +22,7 @@ const VideoDetails = () => {
 
   React.useEffect(() => {
     if (window.location.search) {
-      dispatch(fetchVideo(window.location.search.slice(3)));
+      dispatch(fetchVideo(videoId));
       dispatch(fetchRelationVideo(videoId));
       window.scrollTo({
         top: 0,
