@@ -51,20 +51,21 @@ const Header = () => {
           value={timeVal ? timeVal : searchValue}
           onKeyDown={handleChange}
         />
-        {timeVal.length > 0 && (
-          <UilTimes
-            onClick={() => {
-              dispatch(setSearchValue(""));
-              setTimeVal("");
-              localStorage.removeItem("nextPageToken");
-            }}
-          />
-        )}
+        {timeVal.length > 0 ||
+          (searchValue.length > 0 && (
+            <UilTimes
+              onClick={() => {
+                dispatch(setSearchValue(""));
+                setTimeVal("");
+                localStorage.removeItem("nextPageToken");
+              }}
+            />
+          ))}
       </Search>
       <Menus>
         <UilVideo />
         <UilBell />
-        <Img>
+        <Img href="https://github.com/zakaryadev" target="_blank">
           <img
             src="https://cdn.devdojo.com/users/August2022/zakaryamuratbaev13.jpg"
             alt="avatar"

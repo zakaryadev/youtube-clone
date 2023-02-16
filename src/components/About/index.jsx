@@ -1,19 +1,27 @@
-import React from 'react';
-import { Container, Content } from './styled';
+import React from "react";
+import { Container, Content, Tab } from "./styled";
 
 const About = () => {
   return (
     <Container>
       <Content>
-        <Content.Title>
-          Hi I am Zakarya
-        </Content.Title>
+        <Content.Title>Hi👋</Content.Title>
         <Content.Desc>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Dicta voluptate itaque sint exercitationem veniam! Natus quidem dolore
-          veniam perspiciatis 
-          nisi accusantium architecto quaerat repellat! Provident qui soluta quod
-          exercitationem atque nemo id pariatur asperiores similique aliquid, neque eveniet ipsam. Ea doloremque accusamus nihil quae facere quod natus aut unde iure.
+          <Tab />I am Zakarya, Frontend developer from Karakalpakstan. I really
+          like to try new things. <br />
+          All I need is coffee and a laptop. I am learning programming by
+          myself. And if this program seems interesting, if you have any
+          thoughts, send an email to
+          <Tab />{" "}
+          <a target="_blank" href="https://t.me/zakariadev">
+            https://t.me/zakariadev
+          </a>
+          <Tab />
+          or
+          <Tab />
+          <a target="_blank" href="mailto:zakaryamuratbaev13@gmail.com">
+            zakaryamuratbaev13@gmail.com
+          </a>
         </Content.Desc>
       </Content>
     </Container>

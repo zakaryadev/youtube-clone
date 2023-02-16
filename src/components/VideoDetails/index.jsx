@@ -10,6 +10,7 @@ import {
 import { Container, Toggler, Video } from "./styled.js";
 import { UilEye, UilThumbsUp } from "@iconscout/react-unicons";
 import { Tooltip } from "antd";
+import moment from "moment";
 
 const VideoDetails = () => {
   const [show, setShow] = React.useState(false);
@@ -84,7 +85,12 @@ const VideoDetails = () => {
             height: show ? "fit-content" : "100px",
           }}>
           {snippet?.description && (
-            <TextWithLinks text={snippet?.description} />
+            <React.Fragment>
+              <p style={{ fontWeight: "400", color: "gray" }}>
+                {moment(snippet?.publishedAt).fromNow()}
+              </p>
+              <TextWithLinks text={snippet?.description} />
+            </React.Fragment>
           )}
         </Video.Desc>
         <Toggler onClick={() => setShow(!show)}>
