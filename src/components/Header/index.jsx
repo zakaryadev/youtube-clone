@@ -48,10 +48,10 @@ const Header = () => {
           type="text"
           ref={inputRef}
           onChange={handleChange}
-          value={timeVal.length > 0 ? timeVal : searchValue}
+          value={timeVal}
           onKeyDown={handleChange}
         />
-        {inputRef?.correct?.length > 1 && (
+        {timeVal.length > 0 && (
           <UilTimes
             onClick={() => {
               dispatch(setSearchValue(""));
@@ -66,7 +66,7 @@ const Header = () => {
         <UilBell />
         <Img>
           <img
-            src="https://yt3.ggpht.com/ILMOLWQODN1-TX3Cg2DNZzol60eAMxBgf_9Z_Y6-BUDWBboGFynDC1P-cfuqd4pjzTVIJylEZg=s88-c-k-c0x00ffffff-no-rj-mo"
+            src="https://cdn.devdojo.com/users/August2022/zakaryamuratbaev13.jpg"
             alt="avatar"
           />
         </Img>

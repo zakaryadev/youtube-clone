@@ -5,7 +5,10 @@ import Card from "../Card";
 import SkeletonCard from "../Card/SceletonCard";
 import Preloader from "../Preloader";
 import { CardWrapper, Container } from "./styled";
-import { fetchVideos } from "../../redux/slices/searchSlice";
+import {
+  fetchVideos,
+  localStorageRemover,
+} from "../../redux/slices/searchSlice";
 import { setHistory } from "../../redux/slices/historySlice";
 import { Button } from "antd";
 
@@ -23,9 +26,6 @@ const Home = () => {
     });
   }, [searchValue]);
 
-  if (list.nextPageToken) {
-    localStorage.setItem("nextPageToken", list?.nextPageToken);
-  }
   const onClick = (obj) => {
     dispatch(setHistory(obj));
   };
@@ -49,7 +49,10 @@ const Home = () => {
       <Button
         className="btn btn-load"
         ghost
-        onClick={() => dispatch(fetchVideos(searchValue))}
+        onClick={() => {
+          dispatch(fetchVideos(searchValue));
+          localStorageRemover();
+        }}
       >
         Load more...
       </Button>

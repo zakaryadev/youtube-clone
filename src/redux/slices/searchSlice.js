@@ -3,14 +3,17 @@ import { instance } from "../../api/index";
 
 export const fetchVideos = createAsyncThunk("search/fetchVideos", async (q) => {
   const token = localStorage.getItem("nextPageToken");
-
-  if (token != undefined) {
+  const options = {
+    params: {
+      maxResults: 100,
+      resultsPerPage: 100,
+      part: "snippet,id",
+      q: q,
+    },
+  };
+  if (token && token !== undefined && token !== null) {
     const options = {
       params: {
-        maxResults: 100,
-        resultsPerPage: 100,
-        part: "snippet,id",
-        q: q,
         pageToken: token,
       },
     };
@@ -18,25 +21,19 @@ export const fetchVideos = createAsyncThunk("search/fetchVideos", async (q) => {
 
     return data;
   } else {
-    const options = {
-      params: {
-        maxResults: 100,
-        resultsPerPage: 100,
-        part: "snippet,id",
-        q: q,
-      },
-    };
     const { data } = await instance.get("search", options);
-
     return data;
   }
 });
+
+export const localStorageRemover = () => {
+  localStorage.removeItem("nextPageToken");
+};
 
 const initialState = {
   searchValue: "",
   list: [],
   status: "loading",
-  channelStatus: "loading",
 };
 
 export const searchSlice = createSlice({
@@ -54,16 +51,18 @@ export const searchSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchVideos.pending, (state, action) => {
       state.status = "loading";
-      localStorage.removeItem("nextPageToken");
+      localStorageRemover();
     });
     builder.addCase(fetchVideos.fulfilled, (state, action) => {
+      localStorageRemover();
       state.status = "success";
       state.list = action.payload;
+      localStorage.setItem("nextPageToken", action.payload.nextPageToken);
     });
     builder.addCase(fetchVideos.rejected, (state, action) => {
       state.status = "error";
       state.list = [];
-      localStorage.removeItem("nextPageToken");
+      localStorageRemover();
     });
   },
 });
