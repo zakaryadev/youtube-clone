@@ -63,7 +63,11 @@ const VideoDetails = () => {
         <Video.Title>{snippet?.title}</Video.Title>
         <Video.Info>
           <Tooltip title={snippet?.channelTitle}>
-            <Video.ChannelTitle>{snippet?.channelTitle}</Video.ChannelTitle>
+            <Video.ChannelTitle
+              dangerouslySetInnerHTML={{
+                __html: snippet?.channelTitle,
+              }}
+            />
           </Tooltip>
           <Video.View>
             <UilThumbsUp />
@@ -78,8 +82,7 @@ const VideoDetails = () => {
           style={{
             overflow: show ? "none" : "hidden",
             height: show ? "fit-content" : "100px",
-          }}
-        >
+          }}>
           {snippet?.description && (
             <TextWithLinks text={snippet?.description} />
           )}

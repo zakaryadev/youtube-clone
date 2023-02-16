@@ -9,8 +9,7 @@ const VideoCard = ({ id, snippet, onClick }) => {
     <Card>
       <Link
         to={`/watch?v=${id?.videoId}`}
-        onClick={() => onClick({ id, snippet })}
-      >
+        onClick={() => onClick({ id, snippet })}>
         <Card.Thumbnail>
           <img src={snippet?.thumbnails?.medium?.url} alt="thumbnail" />
         </Card.Thumbnail>
@@ -18,7 +17,11 @@ const VideoCard = ({ id, snippet, onClick }) => {
       <Card.Content>
         <Card.ContentItem>
           <Tooltip title={snippet?.title}>
-            <Card.Title>{snippet?.title?.slice(0, 50)}...</Card.Title>
+            <Card.Title
+              dangerouslySetInnerHTML={{
+                __html: snippet?.title?.slice(0, 50) + "...",
+              }}
+            />
           </Tooltip>
         </Card.ContentItem>
         <Card.ContentItem>
@@ -32,8 +35,7 @@ const VideoCard = ({ id, snippet, onClick }) => {
           <Tooltip
             title={moment(snippet?.publishTime).format(
               "dddd, MMMM Do YYYY, h:mm:ss a"
-            )}
-          >
+            )}>
             <Card.Statistic>
               {moment(snippet?.publishTime).fromNow()}
             </Card.Statistic>

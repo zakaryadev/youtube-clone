@@ -15,26 +15,15 @@ const Sidebar = () => {
         <Menu.Item>
           <NavLink
             to={"/"}
-            className={({ isActive }) => (isActive ? "active" : null)}
-          >
+            className={({ isActive }) => (isActive ? "active" : null)}>
             <UilEstate />
             <p>Home</p>
           </NavLink>
         </Menu.Item>
         <Menu.Item>
           <NavLink
-            to={"/channels"}
-            className={({ isActive }) => (isActive ? "active" : null)}
-          >
-            <UilChannel />
-            <p>Channels</p>
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item>
-          <NavLink
             to={"/history"}
-            className={({ isActive }) => (isActive ? "active" : null)}
-          >
+            className={({ isActive }) => (isActive ? "active" : null)}>
             <UilHistory />
             <p>History</p>
           </NavLink>
@@ -43,8 +32,7 @@ const Sidebar = () => {
         <Menu.Item>
           <NavLink
             to={"/about"}
-            className={({ isActive }) => (isActive ? "active" : null)}
-          >
+            className={({ isActive }) => (isActive ? "active" : null)}>
             <UilQuestion />
             <p>Help</p>
           </NavLink>

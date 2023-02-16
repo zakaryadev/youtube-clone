@@ -48,7 +48,7 @@ const Header = () => {
           type="text"
           ref={inputRef}
           onChange={handleChange}
-          value={timeVal}
+          value={timeVal ? timeVal : searchValue}
           onKeyDown={handleChange}
         />
         {timeVal.length > 0 && (
