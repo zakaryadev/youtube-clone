@@ -1,30 +1,35 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { instance } from "../../api/index";
 
-export const fetchVideos = createAsyncThunk("search/fetchVideos", async (q) => {
-  const token = localStorage.getItem("nextPageToken");
-  const options = {
-    params: {
-      maxResults: 100,
-      resultsPerPage: 100,
-      part: "snippet,id",
-      q: q,
-    },
-  };
-  if (token && token !== undefined && token !== null) {
+export const fetchVideos = createAsyncThunk(
+  "search/fetchVideos",
+  async (q, order) => {
+    const token = localStorage.getItem("nextPageToken");
     const options = {
       params: {
-        pageToken: token,
+        maxResults: 100,
+        resultsPerPage: 50,
+        order: order,
+        part: "snippet,id",
+        regionCode: "US",
+        q: q,
       },
     };
-    const { data } = await instance.get("search", options);
+    if (token && token !== undefined && token !== null) {
+      const options = {
+        params: {
+          pageToken: token,
+        },
+      };
+      const { data } = await instance.get(`search`, options);
 
-    return data;
-  } else {
-    const { data } = await instance.get("search", options);
-    return data;
+      return data;
+    } else {
+      const { data } = await instance.get("search", options);
+      return data;
+    }
   }
-});
+);
 
 export const localStorageRemover = () => {
   localStorage.removeItem("nextPageToken");
@@ -34,6 +39,7 @@ const initialState = {
   searchValue: "",
   list: [],
   status: "loading",
+  order: "relevance",
 };
 
 export const searchSlice = createSlice({
@@ -46,6 +52,9 @@ export const searchSlice = createSlice({
     },
     setList: (state, action) => {
       state.list.push(action.payload);
+    },
+    setOrder: (state, action) => {
+      state.order = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -67,6 +76,6 @@ export const searchSlice = createSlice({
   },
 });
 
-export const { setSearchValue, setList } = searchSlice.actions;
+export const { setSearchValue, setList, setOrder } = searchSlice.actions;
 
 export default searchSlice.reducer;

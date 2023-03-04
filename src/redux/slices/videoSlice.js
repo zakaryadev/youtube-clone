@@ -33,10 +33,42 @@ export const fetchRelationVideo = createAsyncThunk(
   }
 );
 
+export const fetchChannelInfo = createAsyncThunk(
+  "search/fetchChannelInfo",
+  async (id) => {
+    const options = {
+      params: {
+        part: "snippet,statistics",
+        id: id,
+      },
+    };
+    const { data } = await instance.get("channels", options);
+
+    return data.items[0];
+  }
+);
+
+export const fetchVideoComments = createAsyncThunk(
+  "search/fetchVideoComments",
+  async (id) => {
+    const options = {
+      params: {
+        part: "snippet",
+        videoId: id,
+        maxResults: 200,
+      },
+    };
+    const { data } = await instance.get("commentThreads", options);
+    return data;
+  }
+);
+
 const initialState = {
   video: [],
-  status: "loading",
   relatedVideos: [],
+  channelInfo: [],
+  comments: [],
+  status: "loading",
 };
 
 export const searchSlice = createSlice({
@@ -52,6 +84,7 @@ export const searchSlice = createSlice({
     builder.addCase(fetchVideo.rejected, (state, action) => {
       state.video = [];
     });
+
     builder.addCase(fetchRelationVideo.pending, (state, action) => {
       state.status = "loading";
       state.relatedVideos = [];
@@ -63,6 +96,26 @@ export const searchSlice = createSlice({
     builder.addCase(fetchRelationVideo.rejected, (state, action) => {
       state.status = "error";
       state.relatedVideos = [];
+    });
+
+    builder.addCase(fetchChannelInfo.pending, (state, action) => {
+      state.channelInfo = [];
+    });
+    builder.addCase(fetchChannelInfo.fulfilled, (state, action) => {
+      state.channelInfo = action.payload;
+    });
+    builder.addCase(fetchChannelInfo.rejected, (state, action) => {
+      state.channelInfo = [];
+    });
+
+    builder.addCase(fetchVideoComments.pending, (state, action) => {
+      state.comments = [];
+    });
+    builder.addCase(fetchVideoComments.fulfilled, (state, action) => {
+      state.comments = action.payload;
+    });
+    builder.addCase(fetchVideoComments.rejected, (state, action) => {
+      state.comments = [];
     });
   },
 });

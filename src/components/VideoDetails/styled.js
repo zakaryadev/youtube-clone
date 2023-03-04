@@ -18,6 +18,7 @@ const Video = styled.div`
   align-items: flex-start;
   gap: 10px;
   flex-basis: 70%;
+  width: 70%;
   & iframe {
     width: 100%;
     height: 500px;
@@ -44,11 +45,22 @@ Video.Title = styled.h1`
 Video.Info = styled.div`
   display: flex;
   align-items: center;
-  gap: 50px;
+  justify-content: space-between;
+  width: 100%;
+  & img {
+    width: 40px;
+    height: 40px;
+    border-radius: 60px;
+  }
 `;
 
 Video.ChannelTitle = styled.div`
   cursor: pointer;
+`;
+
+Video.Statistics = styled.div`
+  display: flex;
+  gap: 20px;
 `;
 
 Video.View = styled.div`
@@ -64,12 +76,13 @@ Video.Desc = styled.p`
   font-weight: 400;
   white-space: break-spaces;
   box-sizing: border-box;
-  width: 100%;
+  width: inherit;
   background-color: rgba(255, 255, 255, 0.12);
   border-radius: 15px;
   padding: 10px;
   box-sizing: border-box;
   height: 10%;
+  word-wrap: break-word;
   & a {
     color: #3ea6ff;
   }

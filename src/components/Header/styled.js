@@ -84,8 +84,8 @@ const Menus = styled.div`
 
 const Img = styled.a`
   & img {
-    height: 36px;
-    border-radius: 20px;
+    height: 40px !important;
+    border-radius: 40px;
     cursor: pointer;
   }
 `;

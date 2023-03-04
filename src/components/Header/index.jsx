@@ -51,8 +51,8 @@ const Header = () => {
           value={timeVal ? timeVal : searchValue}
           onKeyDown={handleChange}
         />
-        {timeVal.length > 0 ||
-          (searchValue.length > 0 && (
+        {(timeVal.length > 0 ||
+          searchValue.length > 0) && (
             <UilTimes
               onClick={() => {
                 dispatch(setSearchValue(""));
@@ -60,7 +60,7 @@ const Header = () => {
                 localStorage.removeItem("nextPageToken");
               }}
             />
-          ))}
+          )}
       </Search>
       <Menus>
         <UilVideo />

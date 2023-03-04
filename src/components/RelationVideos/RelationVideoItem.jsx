@@ -3,10 +3,13 @@ import moment from "moment/moment";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "./RelationVideoItem";
-const RelationVideoItem = ({ id, snippet }) => {
+
+const RelationVideoItem = ({ id, snippet, onClick }) => {
   return (
     <Card>
-      <Link to={`/watch?v=${id?.videoId}`}>
+      <Link
+        to={`/watch?v=${id?.videoId}`}
+        onClick={() => onClick({ id, snippet })}>
         <Card.Thumbnail>
           <img src={snippet?.thumbnails?.high?.url} alt="thumbnail" />
         </Card.Thumbnail>
@@ -16,8 +19,8 @@ const RelationVideoItem = ({ id, snippet }) => {
           <Card.Title>{snippet?.title?.slice(0, 50)}...</Card.Title>
         </Card.ContentItem>
         <Card.ContentItem>
-          <Card.Channel tooltip="title" href="/@StarLena">
-            <Tooltip title="StarLena">
+          <Card.Channel tooltip="title">
+            <Tooltip title={snippet?.channelTitle}>
               <span>{snippet?.channelTitle}</span>
             </Tooltip>
           </Card.Channel>
