@@ -1,5 +1,4 @@
 # YouTube-Clone
-This project was bootstrapped with [YouTube Clone](https://youtube-clone-zak.netlify.app)
 
 ## Vite, ReactJS, Redux-Toolkit, React-Router-Dom, Antd, Styled-Components, YouTube API V3, Axios, Lodash, Moment, UUID(for unique id) Iconscout Icons,
 

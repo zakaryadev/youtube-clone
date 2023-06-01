@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchValue } from "../../redux/slices/searchSlice";
 import debounce from "lodash.debounce";
-import { Container, Img, Logo, Menus, Search } from "./styled";
+import { Container, Logo, Menus, Search } from "./styled";
 import { Link } from "react-router-dom";
 import {
   UilSearch,
@@ -65,12 +65,6 @@ const Header = () => {
       <Menus>
         <UilVideo />
         <UilBell />
-        <Img href="https://github.com/zakaryadev" target="_blank">
-          <img
-            src="https://cdn.devdojo.com/users/August2022/zakaryamuratbaev13.jpg"
-            alt="avatar"
-          />
-        </Img>
       </Menus>
     </Container>
   );
